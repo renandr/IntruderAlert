@@ -16,14 +16,14 @@ export default class ResizeOnWidth extends cc.Component {
     // onLoad () {}
 
     start () {
-
-        this.node.width = cc.director.getVisibleSize().width - 10;
-        cc.log("cc.view.getVisibleSize() " + cc.view.getVisibleSize());
-        cc.log("cc.view.getVisibleSizeInPixel() " + cc.view.getVisibleSizeInPixel());
-        cc.log("cc.view.getViewPortRect() " + cc.view.getViewPortRect());
-        cc.log("cc.view.getVisibleOrigin() " + cc.view.getVisibleOrigin());
-
+        cc.view.setResizeCallback(this.resizeContent.bind(this));
+        this.resizeContent()
     }
+
+    private resizeContent() {
+        this.node.width = cc.director.getVisibleSize().width - 10;
+    }
+
 
     // update (dt) {}
 }

@@ -1463,8 +1463,7 @@
     "node": {
       "__id__": 3
     },
-    "_enabled": true,
-    "label": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
