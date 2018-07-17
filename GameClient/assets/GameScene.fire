@@ -1522,7 +1522,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Node",
+    "_name": "Char",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -1536,7 +1536,7 @@
       }
     ],
     "_prefab": null,
-    "_id": "c7P14UahdKsYdH4O6CKsFq",
+    "_id": "dckiGtgJ5EGoZatkv42UpB",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -1549,12 +1549,12 @@
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 100,
+      "height": 100
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1562,8 +1562,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 485,
-      "y": 1053
+      "x": 675,
+      "y": 1187
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1580,9 +1580,11 @@
       "__id__": 45
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "f5a58321-0367-4561-a3e4-dbcf55d35328"
+    },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -1595,7 +1597,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": {
-      "__uuid__": "9c3eaa8d-9f6a-4fdf-95c2-0818a8ff33cc"
+      "__uuid__": "fee08c34-ae70-4bf6-a04e-6b37b125a6b4"
     }
   }
 ]
