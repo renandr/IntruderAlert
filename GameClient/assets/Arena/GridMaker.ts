@@ -9,6 +9,8 @@ export default class GridMaker extends cc.Component {
     obstacles: cc.Collider[];
 
     start () {
-
+        for (let collider of this.obstacles){
+            //collider.
+        }
     }
 }
