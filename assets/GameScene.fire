@@ -63,10 +63,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 16
+        "__id__": 15
       },
       {
-        "__id__": 8
+        "__id__": 16
       }
     ],
     "_prefab": null,
@@ -118,17 +118,17 @@
         "__id__": 4
       },
       {
-        "__id__": 9
+        "__id__": 8
       },
       {
-        "__id__": 12
+        "__id__": 11
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 14
       }
     ],
     "_prefab": null,
@@ -270,19 +270,6 @@
     "node": {
       "__id__": 4
     },
-    "_enabled": true,
-    "inputManager": {
-      "__id__": 8
-    },
-    "speed": 0.2
-  },
-  {
-    "__type__": "152cc5PwJhOnKcaTPBrPgCJ",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 2
-    },
     "_enabled": true
   },
   {
@@ -297,10 +284,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 10
+        "__id__": 9
       },
       {
-        "__id__": 11
+        "__id__": 10
       }
     ],
     "_prefab": null,
@@ -345,7 +332,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 9
+      "__id__": 8
     },
     "_enabled": true,
     "tag": 0,
@@ -361,7 +348,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 9
+      "__id__": 8
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -394,10 +381,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 13
+        "__id__": 12
       },
       {
-        "__id__": 14
+        "__id__": 13
       }
     ],
     "_prefab": null,
@@ -442,7 +429,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 12
+      "__id__": 11
     },
     "_enabled": true,
     "tag": 0,
@@ -458,7 +445,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 12
+      "__id__": 11
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -520,5 +507,14 @@
     },
     "_fitWidth": false,
     "_fitHeight": true
+  },
+  {
+    "__type__": "152cc5PwJhOnKcaTPBrPgCJ",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true
   }
 ]

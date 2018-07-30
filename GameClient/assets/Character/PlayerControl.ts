@@ -1,4 +1,4 @@
-import InputManager from "../Arena/InputManager";
+import InputManager, {TouchState} from "../Scripts/InputManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -6,7 +6,10 @@ const {ccclass, property} = cc._decorator;
 export default class PlayerControl extends cc.Component {
 
     @property (InputManager)
-    inputManager: InputManager;
+    inputManager: InputManager = null;
+
+    @property (Number)
+    speed: Number = 2;
 
     // onLoad () {}
 
@@ -16,8 +19,9 @@ export default class PlayerControl extends cc.Component {
 
     update (dt) {
         if(this.inputManager.touchState == TouchState.Move){
-            this.node.x += this.inputManager.deltaPosition.x;
-            this.node.y += this.inputManager.deltaPosition.y;
+            // console.log("dt " + dt);
+            this.node.x -= this.inputManager.deltaPosition.x * dt * this.speed * 1000;
+            this.node.y -= this.inputManager.deltaPosition.y * dt * this.speed * 1000;
         }
     }
 }
