@@ -18,7 +18,7 @@ export default class PlayerControl extends cc.Component {
     }
 
     update (dt) {
-        if(this.inputManager.touchState == TouchState.Move){
+        if(this.inputManager.isActive){
             // console.log("dt " + dt);
             this.node.x -= this.inputManager.deltaPosition.x * dt * this.speed * 1000;
             this.node.y -= this.inputManager.deltaPosition.y * dt * this.speed * 1000;
