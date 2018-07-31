@@ -12,8 +12,7 @@ export default class InputManager extends cc.Component {
 
     private canvasComponent : Canvas;
 
-    private inPosition: Vec2;
-    private _deltaPosition: Vec2 = new Vec2(0,0);
+    private _deltaPosition: Vec2 = Vec2.ZERO;
     private currentTouchId: number = -2;
 
 
@@ -30,33 +29,29 @@ export default class InputManager extends cc.Component {
     private mouseIn(e:cc.Event.EventTouch) {
         if(this.isActive)return;
         this.currentTouchId = e.getID();
-        this.inPosition = new Vec2(e.getLocationX(), e.getLocationY());
     }
 
     private mouseMove(e:cc.Event.EventTouch) {
         if(this.currentTouchId != e.getID())return;
 
-        this._deltaPosition.x = (this.inPosition.x - e.getLocationX()) / this.areaSize.x;
-        this._deltaPosition.y = (this.inPosition.y - e.getLocationY()) / this.areaSize.y;
+        let inPosition : Vec2 = e.getStartLocation();
+        this._deltaPosition.x = (e.getLocationX() - inPosition.x) / this.areaSize.x;
+        this._deltaPosition.y = (e.getLocationY() - inPosition.y) / this.areaSize.y;
 
-
-        if (this._deltaPosition.mag() > 1) {
-            this._deltaPosition.x = this._deltaPosition.x/this._deltaPosition.mag();
-            this._deltaPosition.y = this._deltaPosition.y/this._deltaPosition.mag();
-        }
+        if (this._deltaPosition.mag() > 1) this._deltaPosition.normalizeSelf();
 
         if (this.centerRadiusRatio > 0){
             let newMagnitude : number;
-            if(this._deltaPosition.mag() < this.centerRadiusRatio) newMagnitude = 0;
-            else newMagnitude = (this._deltaPosition.mag() - this.centerRadiusRatio) / (1 - this.centerRadiusRatio);
-            this._deltaPosition.x = this._deltaPosition.x*newMagnitude;
-            this._deltaPosition.y = this._deltaPosition.y*newMagnitude;
+            let mag : number = this._deltaPosition.mag();
+            if(mag < this.centerRadiusRatio) newMagnitude = 0;
+            else newMagnitude = (mag - this.centerRadiusRatio) / (1 - this.centerRadiusRatio);
+            this._deltaPosition.mulSelf(newMagnitude);
         }
     }
 
     private mouseOut(e:cc.Event.EventTouch) {
        if(this.currentTouchId != e.getID())return;
-        this._deltaPosition = new Vec2(0,0);
+        this._deltaPosition = Vec2.ZERO;
         this.currentTouchId = -2;
     }
 
