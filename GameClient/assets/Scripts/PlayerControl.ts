@@ -29,6 +29,9 @@ export default class PlayerControl extends cc.Component {
 
     update (dt) {
         this.body.linearVelocity = this.inputManager.deltaPosition.mul(this.speed);
+        if(!this.inputManager.deltaPosition.equals(Vec2.ZERO)){
+            this.node.rotation = Math.atan2(this.inputManager.deltaPosition.y, -this.inputManager.deltaPosition.x) * 180 / Math.PI;
+        }
     }
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){

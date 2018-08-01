@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "e905df3d-697a-4006-be69-a0bff03ffd4d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "survivor-idle_shotgun_0": {
+      "ver": "1.0.3",
+      "uuid": "cde2048c-700f-4ea4-ba28-18aee08ce4d6",
+      "rawTextureUuid": "e905df3d-697a-4006-be69-a0bff03ffd4d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 8,
+      "offsetY": -10,
+      "trimX": 35,
+      "trimY": 37,
+      "width": 259,
+      "height": 153,
+      "rawWidth": 313,
+      "rawHeight": 207,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
