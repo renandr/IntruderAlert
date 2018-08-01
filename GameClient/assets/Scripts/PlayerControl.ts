@@ -17,6 +17,7 @@ export default class PlayerControl extends cc.Component {
 
 
     private body: cc.RigidBody;
+    private target: cc.Node;
 
     onLoad () {
         cc.director.getPhysicsManager().enabled = true;
@@ -29,16 +30,20 @@ export default class PlayerControl extends cc.Component {
 
     update (dt) {
         this.body.linearVelocity = this.inputManager.deltaPosition.mul(this.speed);
-        if(!this.inputManager.deltaPosition.equals(Vec2.ZERO)){
+        if(this.target != null){
+            this.node.rotation = Math.atan2(this.target.y - this.node.y, -(this.target.x - this.node.x)) * 180 / Math.PI;
+        }else if(!this.inputManager.deltaPosition.equals(Vec2.ZERO)){
             this.node.rotation = Math.atan2(this.inputManager.deltaPosition.y, -this.inputManager.deltaPosition.x) * 180 / Math.PI;
         }
     }
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
+        this.target = other.node;
         log("Boom!"  + other.node.position);
     }
 
     onCollisionExit(other: cc.Collider, self: cc.Collider){
+        this.target = null;
         log("No no no nooo");
     }
 
