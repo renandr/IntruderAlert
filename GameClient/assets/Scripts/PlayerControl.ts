@@ -22,6 +22,8 @@ export default class PlayerControl extends cc.Component {
     onLoad () {
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getCollisionManager().enabled = true;
+        cc.director.getCollisionManager().enabledDebugDraw = true;
+        cc.director.setDisplayStats(false);
     }
 
     start () {
@@ -38,11 +40,14 @@ export default class PlayerControl extends cc.Component {
     }
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
-        this.target = other.node;
+        if(other.tag == 3 && self.tag == 3) {
+            this.target = other.node;
+        }
     }
 
     onCollisionExit(other: cc.Collider, self: cc.Collider){
-        this.target = null;
+        if(other.tag == 3 && self.tag == 3){
+            this.target = null;
+        }
     }
-
 }
