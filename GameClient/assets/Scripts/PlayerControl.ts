@@ -39,12 +39,10 @@ export default class PlayerControl extends cc.Component {
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
         this.target = other.node;
-        log("Boom!"  + other.node.position);
     }
 
     onCollisionExit(other: cc.Collider, self: cc.Collider){
         this.target = null;
-        log("No no no nooo");
     }
 
 }
