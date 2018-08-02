@@ -7,7 +7,7 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class InputManager extends cc.Component {
 
-    private areaSize : Vec2 = new Vec2(150, 150);
+    private areaSize : Vec2 = new Vec2(100, 100);
     private centerRadiusRatio : number = 0.2;
 
     private canvasComponent : Canvas;
