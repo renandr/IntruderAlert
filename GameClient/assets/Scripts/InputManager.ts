@@ -1,7 +1,5 @@
 import Vec2 = cc.Vec2;
 import Canvas = cc.Canvas;
-import log = cc.log;
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass

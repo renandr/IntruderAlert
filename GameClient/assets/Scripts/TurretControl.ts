@@ -1,8 +1,4 @@
-import InputManager from "../Scripts/InputManager";
-import RigidBody = cc.RigidBody;
-import log = cc.log;
-import Vec2 = cc.Vec2;
-import Collider = cc.Collider;
+
 
 const {ccclass, property} = cc._decorator;
 
@@ -13,6 +9,7 @@ export default class TurretControl extends cc.Component {
     weaponNode: cc.Node = null;
 
     private target: cc.Node;
+    private health: number = 5;
 
     onLoad () {
     }
@@ -29,6 +26,9 @@ export default class TurretControl extends cc.Component {
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
         if(other.tag == 4 && self.tag == 4){
             this.target = other.node;
+        } else if(other.tag == 7 && self.tag == 7){
+            this.health --;
+            if(this.health <=0)this.node.destroy();
         }
 
     }

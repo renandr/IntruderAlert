@@ -1,19 +1,38 @@
 import InputManager from "../Scripts/InputManager";
+import PlayerBullet from "./PlayerBullet";
 import RigidBody = cc.RigidBody;
-import log = cc.log;
 import Vec2 = cc.Vec2;
-import Collider = cc.Collider;
+import instantiate = cc.instantiate;
+import Prefab = cc.Prefab;
+import log = cc.log;
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class PlayerControl extends cc.Component {
 
+    /*
+    Collider tags
+        0 = walls on player
+
+        3 = Player detecting enemy
+        4 = Enemy detecting player
+
+        7 = Player Bullet hitting enemy
+        8 = Enemy Bullet hitting player
+
+
+     */
+
+
     @property (InputManager)
     inputManager: InputManager = null;
 
     @property
-    speed: number = 2;
+    speed: number = 250;
+
+    @property (Prefab)
+    bulletPrefab: Prefab = null;
 
 
     private body: cc.RigidBody;
@@ -41,17 +60,33 @@ export default class PlayerControl extends cc.Component {
         }
     }
 
+    private shoot() {
+        let bullet : PlayerBullet= instantiate(this.bulletPrefab).getComponent(PlayerBullet);
+        bullet.node.parent = this.node.parent;
+        bullet.node.x = this.node.x;
+        bullet.node.y = this.node.y;
+        bullet.shoot(this.mainTarget);
+    }
+
     private addTarget(node: cc.Node) {
         this.targets.push(node);
         this.mainTarget = this.targets[0];
+        this.shoot();
+        log("addTarget");
+        log(this.mainTarget);
+        log(this.targets);
+
     }
 
     private removeTarget(node: cc.Node) {
-        var index = this.targets.indexOf(node, 0);
+        let index = this.targets.indexOf(node, 0);
         if (index > -1) {
             this.targets.splice(index, 1);
         }
         this.mainTarget = this.targets[0];
+        log("removeTarget");
+        log(this.mainTarget);
+        log(this.targets);
     }
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
