@@ -82,6 +82,7 @@ export default class PlayerControl extends cc.Component {
 
         }else if(this.mainTarget != previousTarget){
             this.unschedule(this.shoot);
+            this.shoot();
             this.schedule(this.shoot, 1/this.shotsPerSecond, cc.macro.REPEAT_FOREVER);
         }
     }
