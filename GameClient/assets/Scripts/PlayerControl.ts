@@ -5,6 +5,7 @@ import Vec2 = cc.Vec2;
 import instantiate = cc.instantiate;
 import Prefab = cc.Prefab;
 import log = cc.log;
+import GameManager from "./GameManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -34,6 +35,8 @@ export default class PlayerControl extends cc.Component {
     @property (Prefab)
     bulletPrefab: Prefab = null;
 
+    @property
+    shotsPerSecond: number = 2;
 
     private body: cc.RigidBody;
     private mainTarget: cc.Node;
@@ -49,6 +52,7 @@ export default class PlayerControl extends cc.Component {
     start () {
         this.body = this.getComponent(RigidBody);
         this.targets = [];
+        GameManager.instance.node.on("kill", this.updateTarget.bind(this));
     }
 
     update (dt) {
@@ -68,14 +72,22 @@ export default class PlayerControl extends cc.Component {
         bullet.shoot(this.mainTarget);
     }
 
+    private updateTarget() {
+        let previousTarget : cc.Node = this.mainTarget;
+        this.mainTarget = this.targets[0];
+
+        if(this.mainTarget == null){
+            this.unschedule(this.shoot);
+
+        }else if(this.mainTarget != previousTarget){
+            this.unschedule(this.shoot);
+            this.schedule(this.shoot, 1/this.shotsPerSecond, cc.macro.REPEAT_FOREVER);
+        }
+    }
+
     private addTarget(node: cc.Node) {
         this.targets.push(node);
-        this.mainTarget = this.targets[0];
-        this.shoot();
-        log("addTarget");
-        log(this.mainTarget);
-        log(this.targets);
-
+        this.updateTarget();
     }
 
     private removeTarget(node: cc.Node) {
@@ -83,10 +95,6 @@ export default class PlayerControl extends cc.Component {
         if (index > -1) {
             this.targets.splice(index, 1);
         }
-        this.mainTarget = this.targets[0];
-        log("removeTarget");
-        log(this.mainTarget);
-        log(this.targets);
     }
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
@@ -100,4 +108,5 @@ export default class PlayerControl extends cc.Component {
             this.removeTarget(other.node);
         }
     }
+
 }

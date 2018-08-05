@@ -1,3 +1,4 @@
+import GameManager from "./GameManager";
 
 
 const {ccclass, property} = cc._decorator;
@@ -28,7 +29,10 @@ export default class TurretControl extends cc.Component {
             this.target = other.node;
         } else if(other.tag == 7 && self.tag == 7){
             this.health --;
-            if(this.health <=0)this.node.destroy();
+            if(this.health <=0){
+                GameManager.enemyKilled(this.node);
+                this.node.destroy();
+            }
         }
 
     }
