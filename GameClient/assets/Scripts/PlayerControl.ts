@@ -52,7 +52,7 @@ export default class PlayerControl extends cc.Component {
     start () {
         this.body = this.getComponent(RigidBody);
         this.targets = [];
-        GameManager.instance.node.on("kill", this.updateTarget.bind(this));
+        // GameManager.instance.node.on("kill", this.removeTarget.bind(this));
     }
 
     update (dt) {
@@ -73,6 +73,7 @@ export default class PlayerControl extends cc.Component {
     }
 
     private updateTarget() {
+        log("target upgrade");
         let previousTarget : cc.Node = this.mainTarget;
         this.mainTarget = this.targets[0];
 
@@ -95,6 +96,7 @@ export default class PlayerControl extends cc.Component {
         if (index > -1) {
             this.targets.splice(index, 1);
         }
+        this.updateTarget();
     }
 
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
