@@ -17,7 +17,8 @@ export default class PlayerControl extends cc.Component {
 
 
     private body: cc.RigidBody;
-    private target: cc.Node;
+    private mainTarget: cc.Node;
+    private targets: cc.Node[];
 
     onLoad () {
         cc.director.getPhysicsManager().enabled = true;
@@ -28,26 +29,40 @@ export default class PlayerControl extends cc.Component {
 
     start () {
         this.body = this.getComponent(RigidBody);
+        this.targets = [];
     }
 
     update (dt) {
         this.body.linearVelocity = this.inputManager.deltaPosition.mul(this.speed);
-        if(this.target != null){
-            this.node.rotation = Math.atan2(this.target.y - this.node.y, -(this.target.x - this.node.x)) * 180 / Math.PI;
+        if(this.mainTarget != null){
+            this.node.rotation = Math.atan2(this.mainTarget.y - this.node.y, -(this.mainTarget.x - this.node.x)) * 180 / Math.PI;
         }else if(!this.inputManager.deltaPosition.equals(Vec2.ZERO)){
             this.node.rotation = Math.atan2(this.inputManager.deltaPosition.y, -this.inputManager.deltaPosition.x) * 180 / Math.PI;
         }
     }
 
+    private addTarget(node: cc.Node) {
+        this.targets.push(node);
+        this.mainTarget = this.targets[0];
+    }
+
+    private removeTarget(node: cc.Node) {
+        var index = this.targets.indexOf(node, 0);
+        if (index > -1) {
+            this.targets.splice(index, 1);
+        }
+        this.mainTarget = this.targets[0];
+    }
+
     onCollisionEnter(other: cc.Collider, self: cc.Collider){
         if(other.tag == 3 && self.tag == 3) {
-            this.target = other.node;
+            this.addTarget(other.node);
         }
     }
 
     onCollisionExit(other: cc.Collider, self: cc.Collider){
         if(other.tag == 3 && self.tag == 3){
-            this.target = null;
+            this.removeTarget(other.node);
         }
     }
 }

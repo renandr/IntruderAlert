@@ -436,7 +436,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Turret",
+    "_name": "Turret_Front_Left",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -1300,7 +1300,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Turret",
+    "_name": "Turret_Front_Right",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -2164,7 +2164,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Turret",
+    "_name": "Turret_Back_Center",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
