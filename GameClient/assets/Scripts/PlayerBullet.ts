@@ -17,8 +17,7 @@ export default class PlayerBullet extends cc.Component {
 
 
     public shoot(mainTarget: cc.Node):void{
-        this.direction = new Vec2(mainTarget.position.x, mainTarget.position.y);
-        this.direction.normalizeSelf();
+        this.direction = new Vec2(mainTarget.x - this.node.x, mainTarget.y - this.node.y).normalizeSelf();
     }
 
     start() {
