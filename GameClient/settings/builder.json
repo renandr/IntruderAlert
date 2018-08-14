@@ -25,7 +25,6 @@
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait"
   },
-  "renderMode": "0",
   "startScene": "6d25d088-7155-491b-b331-5b88a976066a",
   "title": "IntruderAlert",
   "webOrientation": "portrait",
@@ -36,6 +35,6 @@
     "orientation": "portrait",
     "subContext": ""
   },
-  "xxteaKey": "f6af8c31-eab4-45",
+  "xxteaKey": "63b87526-f38f-4d",
   "zipCompressJs": true
 }
