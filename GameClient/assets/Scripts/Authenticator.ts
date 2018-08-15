@@ -1,5 +1,5 @@
 const {ccclass, property} = cc._decorator;
-// import firebase from "https://www.gstatic.com/firebasejs/5.3.1/firebase.js";
+import firebase from 'firebase';
 
 @ccclass
 export default class Authenticator extends cc.Component {
@@ -8,7 +8,7 @@ export default class Authenticator extends cc.Component {
 
     start () {
         try {
-            // let app = firebase.app();
+            let app = firebase.app();
             // let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
         } catch (e) {
             console.error(e);
@@ -22,7 +22,7 @@ export default class Authenticator extends cc.Component {
             storageBucket: "intruderalert-ff.appspot.com",
             messagingSenderId: "729690132434"
         };
-        //firebase.initializeApp(config);
+        firebase.initializeApp(config);
 
     }
 
